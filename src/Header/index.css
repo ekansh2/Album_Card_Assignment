@@ -1,0 +1,7 @@
+.header{
+width: auto;
+height:70px;
+background-color: rgb(168, 169, 169);
+display: flex;
+gap: 90%;
+}
