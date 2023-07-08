@@ -5,7 +5,10 @@ import "./index.css";
 export const Card = () => {
   const [detailview, setdetailview] = useState(false);
   const [carddetails, setcarddetails] = useState();
-
+  const [detailcardseen, setdetailcardseen] = useState([
+    { id: "1", values: [] },
+  ]);
+  console.log(detailcardseen);
   const [apidata, setapidata] = useState([]);
   function apicheck() {
     fetch("https://jsonplaceholder.typicode.com/albums")
@@ -33,7 +36,12 @@ export const Card = () => {
   return (
     <div className="container">
       {detailview ? (
-        <Listofitems carddetails={carddetails} setdetailview={setdetailview} />
+        <Listofitems
+          carddetails={carddetails}
+          setdetailview={setdetailview}
+          detailcardseen={detailcardseen}
+          setdetailcardseen={setdetailcardseen}
+        />
       ) : (
         result.map((item) => {
           return (
