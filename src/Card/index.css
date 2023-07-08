@@ -6,12 +6,16 @@
   flex-wrap: wrap;
   gap: 50px;
 }
+.id {
+  display: inline-block;
+  margin-top: 30%;
+}
 .albumcard {
   height: 250px;
-  width: 400px;
-  background-color: red;
+  width: 350px;
+  background-color: rgb(248, 122, 122);
   padding: 3px;
-  align-content: center;
+
   border: 2px solid rgb(194, 15, 15);
   background-clip: content-box;
 }
@@ -21,6 +25,7 @@
 }
 .item1 {
   margin-left: -1200px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .detailsbox {
   margin-top: 20px;
@@ -59,4 +64,8 @@
   height: 30px;
   border-radius: 50%;
   float: right;
+  margin: -13px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
