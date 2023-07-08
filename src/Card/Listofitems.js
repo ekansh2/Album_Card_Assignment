@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import "./index.css";
 export const Listofitems = (props) => {
-  const { carddetails, setdetailview } = props;
-  const [detailcardseen, setdetailcardseen] = useState([]);
+  const { carddetails, setdetailview, detailcardseen, setdetailcardseen } =
+    props;
 
-  const detailcardclick = (id) => {
-    setdetailcardseen((oldArray) => [...oldArray, id]);
+  const detailcardclick = (cardId, itemId) => {
+    var count = 0;
+    let newarray = detailcardseen.map((obj) => {
+      if (obj.id == cardId) {
+        count = 1;
+        return { ...obj, values: [...obj.values, itemId] };
+      }
+      return obj;
+    });
+    if (count == 0) newarray.push({ id: cardId, values: [itemId] });
+    setdetailcardseen(newarray);
   };
 
   return (
@@ -15,21 +24,21 @@ export const Listofitems = (props) => {
       </div>
       <div className="cardetails">
         {carddetails[1].map((item) => {
-          return detailcardseen.indexOf(item.id) === -1 ? (
+          console.log(carddetails[0]);
+          return detailcardseen
+            .find((obj) => obj.id === carddetails[0])
+            ?.values.indexOf(item.id) > -1 ? (
+            <div className="detailsboxseen">{item.title}</div>
+          ) : (
             <div
-              onClick={() => {
-                detailcardclick(item.id);
-              }}
               className="detailsbox"
+              onClick={() => {
+                detailcardclick(carddetails[0], item.id);
+              }}
             >
               {item.title}
             </div>
-          ) : (
-            <div className="detailsbox seen">{item.title}</div>
           );
-          // {detailcardseen.indexOf(item.id) > -1 &&
-          //   <div className="detailsbox seen">{item.title}</div>
-          // }
         })}
       </div>
     </div>
